@@ -4,7 +4,7 @@
   <base href="">
   <meta charset="UTF-8">
   
-  <title><?php echo $d->title; ?></title>
+  <title><?php echo isset($d->title) ? $d->title.' - '.get_sitename() : get_sitename(); ?></title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">

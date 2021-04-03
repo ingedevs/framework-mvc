@@ -6,11 +6,17 @@ class homeController {
     }
 
     function index() {
-        //echo 'Bienvenido';
         $data = [
             'title' => 'Bienvenido',
             'bg' => 'dark'
         ];
         View::render('main', $data);
+    }
+
+    function test() {
+        $data = [
+            'title' => 'Test'
+        ];
+        View::render('test', $data);
     }
 }
