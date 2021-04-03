@@ -39,7 +39,7 @@
     define('CSS'        , ASSETS.'css/');
     define('FAVICON'    , ASSETS.'favicon/');
     define('FONTS'      , ASSETS.'fonts/');
-    define('IMG'        , ASSETS.'img/');
+    define('IMAGES'     , ASSETS.'img/');
     define('JS'         , ASSETS.'js/');
     define('PLUGINS'    , ASSETS.'plugins/');
     define('UPLOADS'    , ASSETS.'uploads/');

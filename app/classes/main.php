@@ -84,12 +84,14 @@ class Main {
      * @return void
      */
     private function init_autoload() {
-        require_once CLASSES.'database.php';
-        require_once CLASSES.'model.php';
-        require_once CLASSES.'controller.php';
-        require_once CONTROLLERS.DEFAULT_CONTROLLER.'Controller.php';
-        require_once CONTROLLERS.DEFAULT_ERROR_CONTROLLER.'Controller.php';
-        require_once CONTROLLERS.'usersController.php';
+        require_once CLASSES.'autoloader.php';
+        Autoloader::init();
+        //require_once CLASSES.'database.php';
+        //require_once CLASSES.'model.php';
+        //require_once CLASSES.'view.php';
+        //require_once CLASSES.'controller.php';
+        //require_once CONTROLLERS.DEFAULT_CONTROLLER.'Controller.php';
+        //require_once CONTROLLERS.DEFAULT_ERROR_CONTROLLER.'Controller.php';
         return;
     }
 
@@ -131,6 +133,7 @@ class Main {
         $controller = $current_controller.'Controller';
         if(!class_exists($controller)) {
             $controller = DEFAULT_ERROR_CONTROLLER.'Controller'; // errorController
+            $current_controller = DEFAULT_ERROR_CONTROLLER; // para que CONTROLLER sea error
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -141,6 +144,7 @@ class Main {
             if(!method_exists($controller, $method)) {
                 $controller = DEFAULT_ERROR_CONTROLLER.'Controller'; // errorController
                 $current_method = DEFAULT_METHOD; // index
+                $current_controller = DEFAULT_ERROR_CONTROLLER;
             } else {
                 $current_method = $method;
             }
@@ -148,6 +152,12 @@ class Main {
         } else {
             $current_method = DEFAULT_METHOD; // index
         }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        // Creando constantes para utilizar mas adelante
+        define('CONTROLLER', $current_controller);
+        define('METHOD'    , $current_method);
+        define('', '');
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
         // Ejecutando  controlador y metodo segun se haga la peticion
@@ -161,9 +171,6 @@ class Main {
             call_user_func_array([$controller, $current_method], $params);
         }   
         return;
-
-        //print_r($this->uri);
-        //print_r($params);
     }
 
     /**

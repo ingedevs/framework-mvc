@@ -2,10 +2,15 @@
 
 class homeController {
     function __construct() {
-        echo 'Ejecutando '.__CLASS__;
+        
     }
 
     function index() {
-
+        //echo 'Bienvenido';
+        $data = [
+            'title' => 'Bienvenido',
+            'bg' => 'dark'
+        ];
+        View::render('main', $data);
     }
 }
