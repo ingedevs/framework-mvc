@@ -1,12 +1,27 @@
 <?php
 
-class testController {
+class testController extends Controller {
     function __construct() {
         
     }
 
     function index() {
         View::render('test');
+    }
+
+    function models() {
+        try {
+            $user = new testModel();
+            $user->id = 4;
+            $user->name = 'NAME';
+            $user->username = 'USERNAME';
+            $user->email = 'EMAIL';
+            $user->created_at = now();
+            //$user->add();
+            //$user->update();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        } 
     }
 
     function database() {
