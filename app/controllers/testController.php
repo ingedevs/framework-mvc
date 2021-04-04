@@ -9,6 +9,17 @@ class testController extends Controller {
         View::render('test');
     }
 
+    function csrf() {
+        print_r($_SESSION);
+        
+        $token_peticion = '9f0f5fb7753b0712e10b45100d8f95cde8f2d946ad1a9c100a68739155ade4b3';
+        if(Csrf::validate($token_peticion)) {
+            echo 'valido';
+        } else {
+            die('cuidado, token no valido e inseguro');
+        }
+    }
+
     function models() {
         try {
             $user = new testModel();

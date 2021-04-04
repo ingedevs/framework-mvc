@@ -22,6 +22,7 @@ class Main {
         $this->init_load_config();
         $this->init_load_functions();
         $this->init_autoload();
+        $this->init_csrf();
         $this->dispatch();
     }
 
@@ -87,6 +88,14 @@ class Main {
         require_once CLASSES.'autoloader.php';
         Autoloader::init();
         return;
+    }
+
+    /**
+     * Metodo para crear un nuevo token de la sesion del usuario
+     * @return void
+     */
+    private function init_csrf() {
+        $csrf = new Csrf();
     }
 
     /**
