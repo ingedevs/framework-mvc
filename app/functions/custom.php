@@ -1,5 +1,6 @@
 <?php
 
-    function en_custom() {
-        return 'custom functions';
-    }
+function en_custom()
+{
+    return 'custom functions';
+}

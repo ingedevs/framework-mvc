@@ -1,6 +1,7 @@
 <?php
 
-class testModel extends Model {
+class testModel extends Model
+{
     public $id;
     public $name;
     public $username;
@@ -12,7 +13,8 @@ class testModel extends Model {
      * Metodo para agregar un usuario
      * @return integer
      */
-    public function add() {
+    public function add()
+    {
         $sql = 'INSERT INTO tests (name, username, email, created_at) VALUES (:name, :username, :email, :created_at)';
         $registro = [
             'name'       => $this->name,
@@ -28,7 +30,8 @@ class testModel extends Model {
         }
     }
 
-    public function update() {
+    public function update()
+    {
         $sql = 'UPDATE tests SET name=:name, username=:username, email=:email WHERE id=:id';
         $registro = [
             'id'         => $this->id,
@@ -43,5 +46,4 @@ class testModel extends Model {
             throw $e;
         }
     }
-
 }

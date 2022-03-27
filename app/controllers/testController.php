@@ -1,26 +1,18 @@
 <?php
 
-class testController extends Controller {
-    function __construct() {
-        
+class testController extends Controller
+{
+    function __construct()
+    {
     }
 
-    function index() {
+    function index()
+    {
         View::render('test');
     }
 
-    function csrf() {
-        print_r($_SESSION);
-        
-        $token_peticion = '9f0f5fb7753b0712e10b45100d8f95cde8f2d946ad1a9c100a68739155ade4b3';
-        if(Csrf::validate($token_peticion)) {
-            echo 'valido';
-        } else {
-            die('cuidado, token no valido e inseguro');
-        }
-    }
-
-    function models() {
+    function models()
+    {
         try {
             $user = new testModel();
             $user->id = 4;
@@ -32,10 +24,11 @@ class testController extends Controller {
             //$user->update();
         } catch (Exception $e) {
             echo $e->getMessage();
-        } 
+        }
     }
 
-    function database() {
+    function database()
+    {
         echo 'Probando la base de datos<br><br><br>';
         echo '<pre>';
         try {
@@ -64,28 +57,29 @@ class testController extends Controller {
             // DELETE
             $sql = 'DELETE FROM tests WHERE id=:id LIMIT 1';
             //Database::query($sql, ['id' => 3]);
-            
+
             // ALTER TABLE 
             $sql = 'ALTER TABLE tests ADD COLUMN username VARCHAR(255) NULL AFTER name';
             //Database::query($sql);
 
         } catch (Exception $e) {
-            echo 'Hubo un error | '.$e->getMessage();
+            echo 'Hubo un error | ' . $e->getMessage();
         }
 
         echo '</pre>';
     }
 
-    function flash() {
+    function flash()
+    {
         unset($_SESSION);
-        flasher::new('A simple primary alert'  , 'primary');
+        flasher::new('A simple primary alert', 'primary');
         flasher::new('A simple secondary alert', 'secondary');
-        flasher::new('A simple success alert'  , 'success');
-        flasher::new('A simple danger alert'   , 'danger');
-        flasher::new('A simple warning alert'  , 'warning');
-        flasher::new('A simple info alert'     , 'info');
-        flasher::new('A simple light alert'    , 'light');
-        flasher::new('A simple dark alert'     , 'dark');
+        flasher::new('A simple success alert', 'success');
+        flasher::new('A simple danger alert', 'danger');
+        flasher::new('A simple warning alert', 'warning');
+        flasher::new('A simple info alert', 'info');
+        flasher::new('A simple light alert', 'light');
+        flasher::new('A simple dark alert', 'dark');
 
         View::render('flash');
     }
